@@ -1,0 +1,44 @@
+CS 291 Exam 3
+April 22, 2021
+
+Jingbo Wang
+
+Overall:  15 + 10 + 15 + 11 + 10 + 15 + 5 = 81
+
+Part 1 (20 points)
+
+Only state 2 in the original is a final state, so only the state based
+on state 2 is a final state in the DFA.  And, from state 2 on input b,
+you can follow the lambda link back to state 1, then stay in state 1.
+
+15/20
+
+Part 2 (10 points)
+
+good 10/10
+
+Part 3 (15 points)
+
+good  15/15
+
+Part 4 (15 points)
+
+Presumably the lower c out of state 0 is meant to be a b.  But you
+still accept aab, but that is not in the language.
+
+11/15
+
+Part 5 (15 points)
+
+As the question said, show your work.   10/15
+
+Part 6 (15 points)
+
+good  15/15
+
+Part 7 (10 points)
+
+This is not a correct part tree.  Only nonterminals have child nodes
+in a parse tree.
+
+5/10

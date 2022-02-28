@@ -1,0 +1,179 @@
+\documentclass[12pt]{article}
+\pagestyle{plain}
+\usepackage[paper=letterpaper,
+        left=1in,
+        right=1in,
+        top=1in,
+        bottom=1in] {geometry}
+        
+\usepackage[parfill]{parskip}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+
+\begin{document}
+\begin{center}
+{\large CS 291}\\
+Homework 6
+\end{center}
+
+\begin{flushright}
+Jingbo Wang\\
+jw6347@truman.edu
+\end{flushright}
+
+\textbf{Section 3.3, Exercise 4.d} Find a grammar for each language.\\
+$\{a^m b^n | m, \enspace n \in N, \enspace where \enspace n > 0\}$.
+
+\textbf{Answer:}
+
+let \textbf{\textit{L} = $\{a^m b^n | m, \enspace n \in N, 
+\enspace where \enspace n > 0\}$}.\\
+We notice that \textbf{\textit{L}} can be written as a product \textbf{\textit{L = MN}},
+where \textbf{\textit{M} = $\{a^m | m \in N \}$},
+and \textbf{N = $\{b^n | n \in N\}$} where $n > 0$.\\
+Thus we can write the following grammar for\textbf{\textit{L}}:
+
+\begin{center}
+\begin{tabular}{l}
+$S \rightarrow AB \enspace product \enspace rule$, \\
+$A \rightarrow \wedge | aA \enspace grammar \enspace for \enspace \textbf{M}$,\\
+$B \rightarrow b | bB \enspace grammar \enspace for \enspace \textbf{N}$. \\   
+\end{tabular}
+\end{center}
+ 
+ 
+ 
+ 
+
+\textbf{Section 3.3, Exercise 4.e} Find a grammar for each language.\\
+$\{a^m b^n | m, \enspace n \in N, 
+\enspace where \enspace m > 0 \enspace and \enspace n > 0 \}$
+
+\textbf{Answer:}
+
+let \textbf{\textit{L} = $\{a^m b^n | m, \enspace n \in N, 
+\enspace where \enspace n > 0\}$}.\\
+We notice that \textbf{\textit{L}} can be written as a product \textbf{\textit{L = MN}},
+where \textbf{\textit{M} = $\{a^m | m \in N \}$} where $m > 0$,
+and \textbf{N = $\{b^n | n \in N\}$} where $n > 0$.\\
+Thus we can write the following grammar for\textbf{\textit{L}}:
+
+\begin{center}
+\begin{tabular}{l}
+$S \rightarrow AB$ product rule, \\
+$A \rightarrow a | aA$ grammar for \textbf{M},\\
+$B \rightarrow b | bB$ grammar for \textbf{N}. \\   
+\end{tabular}
+\end{center}
+
+\textbf{Section 3.3, Exercise 5.a} Find a grammar for each language.\\
+The even palindromes over $\{a, b, c\}$.
+
+\textbf{Answer:}
+
+We can use Closure Rule for this question, here even palindromes over $\{a, b, c\}$ 
+contains a string of from $\wedge$ or $aSa$ or $bSb$ or $cSc$.\\
+Therefore, we can get grammaras follow by:
+\begin{center}
+\begin{tabular}{l}
+$S \rightarrow \wedge|ASA$\\
+$A \rightarrow a|b|c$\\
+\end{tabular}
+\end{center}
+
+On simplifying by substitution for \textit{A}, we can get:
+\begin{center}
+\begin{tabular}{l}
+$S \rightarrow \wedge|aSa|bSb|cSc$.
+\end{tabular}
+\end{center}
+
+\textbf{Section 3.3, Exercise 5.b} Find a grammar for each language.
+The odd palindromes over $\{a, b, c\}$.
+
+We can use Closure Rule for this question, here odd palindromes over $\{a, b, c\}$ 
+contains a string of from \textit{a} or \textit{b} or \textit{c} 
+or $\wedge$ or $aSa$ or $bSb$ or $cSc$.\\
+Therefore, we can get grammaras follow by:
+\begin{center}
+\begin{tabular}{l}
+$S \rightarrow a|b|c|ASA$\\
+$A \rightarrow aSa|bSb|cSc$\\
+\end{tabular}
+\end{center}
+
+On simplifying by substitution for \textit{A}, we can get:
+\begin{center}
+\begin{tabular}{l}
+$S \rightarrow a|b|c|aSa|bSb|cSc$.
+\end{tabular}
+\end{center}
+
+\textbf{Section 3.3, Exercise 6.b} Find a grammar for each of the following languages.\\
+The set of binary numerals that represent even natural numbers
+
+\textbf{Answer:}
+
+we know that: 
+\begin{center}
+$0 \rightarrow 0000$ \\
+$2 \rightarrow 0010$ \\
+$4 \rightarrow 0100$ \\
+$6 \rightarrow 0110$ \\
+$8 \rightarrow 1000$ \\   
+\end{center}
+
+If E is the start symbol of even natural number, then the grammar is 
+\begin{center}
+$E \rightarrow B0$ and $B \rightarrow \wedge|B0|B1$ \\
+\end{center}
+
+\textbf{Section 3.3, Exercise 11.d} Show that each of the following grammars is ambiguous. 
+In otherwords, find a string that has two different parse trees (equivalently, two
+different leftmost derivations or two different rightmost derivations).\\
+$S \rightarrow aS | Sa | b$.
+
+\textbf{Answer:}
+
+There are two different left most derivations to get the language of $aba$.
+\begin{center}
+\begin{tabular}{l}
+$S \Rightarrow aS \Rightarrow aSa \Rightarrow aba$ \\
+$S \Rightarrow Sa \Rightarrow aSa \Rightarrow aba$ \\
+\end{tabular}
+\end{center}
+
+First tree:
+\begin{center}
+\begin{tikzpicture}
+\node (1) at (4.5,6) {S};
+\node (2) at (1.75,4) {a};
+\node (3) at (7,4) {S};
+\node (4) at (6,2) {S};
+\node (5) at (9,2) {a};
+\node (6) at (6,0) {b};
+\path[-] (1) edge (2)
+                   edge (3);
+\path[-] (3) edge (4)
+                    edge (5);
+\path[-] (4) edge (6); 
+\end{tikzpicture}
+\end{center}
+
+Second tree:
+\begin{center}
+\begin{tikzpicture}
+\node (1) at (4.5,6) {S};
+\node (2) at (1.75,4) {S};
+\node (3) at (7,4) {a};
+\node (4) at (0.75,2) {a};
+\node (5) at (3.5,2) {S};
+\node (6) at (3.5,0) {b};
+\path[-] (1) edge (2)
+                   edge (3);
+\path[-] (2) edge (4)
+                    edge (5);
+\path[-] (5) edge (6); 
+\end{tikzpicture}
+\end{center}
+\end{document}

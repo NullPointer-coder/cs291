@@ -1,0 +1,51 @@
+CS 291 Exam 2
+March 24, 2021
+
+Jingbo Wang
+
+Overall:  10 + 12 + 10 + 18 + 14 + 15 + 10 = 89
+
+Part 1 (15 points)
+
+The x in A(x) is a free variable and not related to the quantified x.
+One or the other should be renamed.  Also your DNF isn't quite right.
+It should pair A(x) with each of the three elements from the OR.
+
+10/15
+
+Part 2 (15 points)
+
+The order here isn't quite right.  EI of can only instantiate a new
+constant, but you instantiate d using UI in step 3, then reuse the
+same d in EI in step 4.  Just switch the order of those two steps and
+this is fine.
+
+12/15
+
+Part 3 (10 points)
+
+good  10/10
+
+Part 4 (20 points)
+
+This question was messed up.  You successfully negated the wff and put
+it in clausal form, but then you somehow did resolution with
+non-matching predicates.  That isn't allowed.
+
+18/20
+
+Part 5 (15 points)
+
+After you do the three AA steps, you can just use Composition to
+combine them all together.  Generally this is okay.
+
+14/15
+
+Part 6 (15 points)
+
+Okay.  Your second example is not first order logic, but I'll let that
+slide.   15/15
+
+Part 7 (10 points)
+
+fine  10/10

@@ -1,0 +1,403 @@
+\documentclass[12pt]{article}
+\usepackage[paper=letterpaper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+\usepackage[parfill]{parskip}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+{\large CS 291}\\
+Homework 5
+\end{center}
+
+\begin{flushright}
+Jingbo Wang\\
+jw6347@truman.edu \\
+\end{flushright}
+
+
+\textbf{Section 8.1, problem 2.b}  Prove that each of the following wffs is correct. 
+Assume that the domain is the set of integers.
+
+$ \{ a > b \} \enspace x \coloneqq -a; \enspace y \coloneqq -b  \enspace \{ x < y \}$.
+
+\emph{Answer:} 
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1. & $\{ x < -b \} \enspace y \coloneqq -b \enspace \{ x < y \}$   & $AA$ \\
+2. & $\{ -a < -b \} \enspace x \coloneqq -a \enspace \{ x < -b \}$  & $AA$ \\
+3. & \qquad $a > b$ & $P$ [for $(a > b) \rightarrow ( -a < -b)$] \\
+4. & \qquad $-a < -b$ & 2, T\\
+5. & $(a > b) \rightarrow (-a < -b)$ & 3, 4, CP \\
+6. & $\{ a > b \} \enspace x \coloneqq - a; \enspace y \coloneqq - b\enspace\{ x < y \}$ 
+                                     & 1, 5, Consequence \\
+& $QED$. \\
+\end{tabular}
+
+\textbf{Section 8.1, problem 4.a}  Prove that each of the following wffs is correct. 
+Assume that the domain is the set of integers.
+
+$ \{ x < 10 \} \enspace \textbf{if} \enspace x \geq 5 \enspace \textbf{then} \enspace x 
+\coloneqq 4 \enspace \{ x < 5 \}$.
+
+\emph{Answer:} 
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1. & $\{4 < 5 \} \enspace x \coloneqq 4 \enspace \{ x < 5 \}$   & $AA$ \\
+2. & \qquad $(x < 10) \land (x \geq 5)$ & $P$[for CP] \\
+3. & \qquad $4 < 5$ & 2, T \\
+4. & $(x < 10) \land (x \geq 5) \rightarrow (4 < 5)$  & 2, 3, CP \\
+5. & $\{ (x < 10) \land (x \geq 5) \} \enspace x \coloneqq 4 \enspace \{ x < 5 \}$ 
+                                                  & 1, 4, Consequence \\
+6. & \qquad $(x < 10) \land \neg (x \geq 5)$ & P[for CP] \\
+7. & \qquad $x < 5$ & 6, Simp \\
+8. & $(x < 10) \land \neg (x \geq 5) \rightarrow (x < 5)$ & 6, 7, CP \\
+9. & $\{ x < 10 \} \enspace \textbf{if} \enspace x \geq 5 \enspace \textbf{then} \enspace x 
+      \coloneqq 4 \enspace \{ x < 5 \}$ & 5, 8, If-Then \\
+& $QED$. \\
+\end{tabular}
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\textbf{Section 8.1, problem 4.b}  Prove that each of the following wffs is correct. 
+Assume that the domain is the set of integers.
+
+$ \{ True \} \enspace \textbf{if} \enspace x \neq y \enspace \textbf{then} \enspace 
+x \coloneqq y \enspace \{ x = y \}$.
+
+\emph{Answer:} 
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1. & $\{ y = y \} \enspace x \coloneqq y \enspace \{ x = y \}$   & $AA$ \\
+2. & \qquad $((True) \land (x \neq y))$ & P [for CP]\\
+3. & \qquad $y = y$ & 3, T \\
+4. & $((True) \land (x \neq y)) \rightarrow (y = y)$  & 2, 3, CP \\
+5. & $\{ (True) \land (x \neq y)\} \enspace x \coloneqq y \enspace \{ x = y \}$ 
+                                                            & 1, 4, Consequence \\
+6. & \qquad $(True) \land \neg (x \neq y)$ & P [for CP] \\
+7. & \qquad $x = y$ & 6, Simp \\
+8. & $((True) \land \neg (x \neq y)) \rightarrow (x = y)$ & 6, 7, CP \\
+9. & $\{ True \} \enspace \textbf{if} \enspace x \neq y \enspace \textbf{then} \enspace 
+x \coloneqq y \enspace \{ x = y \}$ & 5, 8, If-Then\\
+& $QED$. \\
+\end{tabular}
+
+\textbf{Section 8.3, problem 1.c}  Use Skolem’s algorithm, if necessary, to  
+transform each of the following wffs into a clausal form.
+
+$\exists y \enspace \forall x \enspace (p(x, y) \rightarrow q(x))$.
+
+\emph{Answer:} 
+
+\begin{align*}
+\exists y \enspace \forall x \enspace (p(x, y) \rightarrow q(x))
+    & \equiv \exists y \enspace \forall x \enspace (\neg p(x, y) \lor q(x)) 
+    && remove \rightarrow \\
+    &  \equiv \forall x \enspace (\neg p(x,c) \lor q(x))  
+    && Skolem's rule \\
+\end{align*}
+
+\textbf{Section 8.3, problem 1.d}  Prove that each of the following wffs is correct. 
+Assume that the domain is the set of integers.
+
+$\exists y \enspace \forall x \enspace p(x, y) \rightarrow q(x)$.
+
+\emph{Answer:} 
+
+\begin{align*}
+\exists y \enspace \forall x \enspace p(x, y) \rightarrow q(x)
+    & \equiv \forall y \enspace \exists x \enspace \neg p(x, y) \lor q(x) 
+    && remove \rightarrow \\
+    &  \equiv \forall y \enspace \neg p(f(y),y) \lor q(f(y))  
+    && Skolem's rule \\
+\end{align*}
+\\
+\\
+\\
+\\
+\\
+\textbf{Section 8.3, problem 3.c}   Find a resolution proof to show that each of the 
+following sets of propositional clauses is unsatisfiable.
+
+$\{A \lor B, A \lor \neg C, \neg A \lor C, \neg A \lor \neg B, C \lor \neg B, \neg C 
+\lor B \}$.
+
+\emph{Answer:} 
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1.  & $A \lor B$           & $P$ \\
+2.  & $A \lor \neg C$      & $P$ \\
+3.  & $\neg A \lor C$      & $P$ \\
+4.  & $\neg A \lor \neg B$ & $P$ \\   
+5.  & $C \lor \neg B$      & $P$ \\
+6.  & $\neg C \lor B$      & $P$ \\ 
+7.  & $B \lor C$           & 1, 3, R \\
+8.  & $B \lor B$           & 6, 7, R \\
+9.  & $\neg A$             & 4, 8, R \\
+10. & $\neg C$             & 2, 9, R \\
+11. & $\neg B$             & 5, 10, R \\
+12. & $A$                  & 1, 11, R \\
+13. & $[ \enspace ]$       & 9, 12, R \\ 
+& $QED$.\\
+\end{tabular}
+\\
+\\
+\\
+\textbf{Section 8.3, problem 5.c}   Use Robinson’s unification algorithm to find a most general 
+unifier for each of the following sets of atoms.
+
+$\{ p(f(x, \enspace g(y)), \enspace y), p(f(g (a), \enspace z), \enspace b) \}$.
+
+\emph{Answer:} 
+
+\begin{enumerate}
+    \item Set $\theta_0 = \in$.
+    \item $S\theta_0 = S \in = S$, is not a singleton. $D_0 = \{ x,\enspace g(a) \}$.
+    \item Variable \emph{x} does not occur in the term g(a) of $D_0$. \\
+          Put $\theta_1 = \theta_0 \{ x/ g(a)\} = \{ x/ g(a)\}$.
+    \item $S\theta_1 = {p(f(g(a), \enspace g(y)), \enspace y), p(f(g(a), \enspace z), \enspace b)}$ 
+          is not a singleton.$D_1 = \{ g(y), \enspace z \}$.  
+    \item Variable \emph{z} does not occur in the term \emph{g(y)} of $D_1$. \\ 
+          Put $\theta_2 = \theta_1 \enspace \{ z / g(y) \} = \{ x/g(a)\}\enspace \{z/g(y)\} = 
+          \{x / g(a) ,\enspace z / g(y)\}$.
+    \item $S\theta_2 = \{ p(f(g(a),g(y)),y),\enspace    
+          p(f(g(a),g(b)),b)\}$, is not a singleton. $D_2 = \{y,b\}$.
+    \item Variable \emph{y} does not occur in the term b of $D_2$. \\
+          Put $\theta_3 = \theta_2{y/b} = \{x/g(a), z/g(y)\} \{y/b\} = \{ x/g(a), z/g(b), y/b\}$.
+    \item $S\theta_3 = {p(f(g(a),g(b)), b)}$, is a singleton. \\
+          Therefore, the algorithm terminates with the most general unifier $\{x/g(a), z/g(b), y/b\}$ 
+          for the given set S.
+\end{enumerate}
+
+\textbf{Section 8.3, problem 5.d}   Use Robinson’s unification algorithm to find a most general 
+unifier for each of the following sets of atoms.
+
+$\{ p(x, f(x), y), \enspace p(x, y, z), \enspace p(w, f(a), \enspace b) \}$.
+
+\emph{Answer:} 
+
+\begin{enumerate}
+    \item Set $\theta_0 = \in$.
+    \item $S\theta_0 = S \in = S$, is not a singleton. $D_0 = \{ x,\enspace w \}$.
+    \item Variable \emph{x} does not occur in the term g(a) of $D_0$. \\
+          Put $\theta_1 = \theta_0 \{ x / w\} = \{ x / w \}$.
+    \item $S\theta_1 = \{ p(w,f(w),y),p(w,y,z),p(w,f(a),b) \}$ 
+          is not a singleton.$D_1 = \{ y, \enspace f(w) \}$.  
+    \item Variable \emph{y} does not occur in the term   \emph{f(w)} of $D_1$. \\ 
+          Put $\theta_2 = \theta_1 \enspace \{ y / f(w) \} = \{ x / w \}\enspace \{ y/ f(w) \} = 
+          \{ x / w ,\enspace y / f(w)\}$.
+    \item $S\theta_2 = \{ p(w,f(w), f(a)), p(w,f(w),z), p(w,f(a),b) \}$, is not a singleton. $D_2 = \{ w,a \}$.
+    \item As we do not have a variable in this disagreement set, the algorithm terminates here, 
+          with the conclution that, the given set S is not unifiable.
+\end{enumerate}
+
+\textbf{Section 8.3, problem 8.c}   Use resolution to show that each of the following sets of clauses is
+unsatisfiable
+
+$\{ p(a) \lor p(x), \neg p(a) \lor \neg p(y) \}$
+
+\emph{Answer:} 
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1.  & $p(a) \lor p(x)$                & $P$ \\
+2.  & $\neg p(a) \lor \neg p(y)$      & $P$ \\
+3.  & $[ \enspace ] $                 & 1, 2, R, $\{ x/a, \enspace y/a \}$ \\
+& $QED$. \\
+\end{tabular}
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\textbf{Section 8.3, problem 9.c}   Use Robinson’s unification algorithm to find a most general 
+unifier for each of the following sets of atoms.
+
+$(p \lor q) \land (q \rightarrow r) \land (r \rightarrow s) \rightarrow (p \lor s)$.
+
+\emph{Answer:} 
+
+\begin{align*}
+& (p \lor q) \land (q \rightarrow r) \land (r \rightarrow s) \rightarrow (p \lor s) \\
+        \equiv \enspace & \neg ((p \lor q) \land (q \rightarrow r) \land (r \rightarrow s) \land (p \lor s)) \\
+        \equiv \enspace & (p \lor q) \land (\neg q \lor r) \land (\neg r \lor s) \land \neg (p \lor s) \\
+        \equiv \enspace & (p \lor q) \land (\neg q \lor r) \land (\neg r \lor s) \land \neg p \land \neg s \\
+\end{align*}
+
+Giving us five clauses:
+
+\begin{center}
+     $p \lor q, \enspace \neg q \lor r, \enspace \neg r \lor s, \enspace \neg p, \enspace \neg s$
+\end{center}
+
+After negating the statement and putting the result in clausal form, we obtain the following proof:
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1.  & $p \lor q$           & $P$ \\
+2.  & $\neg q \lor r$      & $P$ \\
+3.  & $\neg r \lor s$      & $P$ \\
+4.  & $\neg p$             & $P$ \\   
+5.  & $\neg s$             & $P$ \\
+6.  & $\neg r$             & 3, 5, R \\
+7.  & $\neg q$             & 2, 6, R \\
+8.  & $q$                  & 1, 4, R \\
+9.  & $[ \enspace ]$       & 7, 8, R \\
+& $QED$. \\
+\end{tabular}
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\textbf{Section 8.3, problem 10.d}   Use Robinson’s unification algorithm to find a most general 
+unifier for each of the following sets of atoms.
+
+$\exists x \enspace \forall y \enspace p(x, y) \land \forall x \enspace (p(x, x) \rightarrow \exists y 
+\enspace q(y, x)) \rightarrow \exists y \enspace \exists x \enspace q(x, y)$.
+
+\emph{Answer:} 
+\begin{align*}
+& \exists x \enspace \forall y \enspace p(x, y) \land \forall x \enspace (p(x, x) \rightarrow \exists y 
+  \enspace q(y, x)) \rightarrow \exists y \enspace \exists x \enspace q(x, y)   & && \\
+        \equiv \enspace & \neg (\exists x \enspace \forall y \enspace p(x, y) \land \forall z \enspace (p(z, z) 
+                          \rightarrow \exists m \enspace q(m, z)) \rightarrow \exists h \enspace \exists n 
+                          \enspace q(n, h)) \\
+                        & (renamed \enspace variable) \\
+        \equiv \enspace & \neg (\exists x \enspace \forall y \enspace p(x, y) \land \forall z \enspace (p(z, z) 
+                          \rightarrow \exists m \enspace q(m, z)) \land \exists h \enspace \exists n 
+                          \enspace q(n, h)) \\
+                        & (removed \enspace outside \enspace \rightarrow) \\
+        \equiv \enspace & (\exists x \enspace \forall y \enspace p(x, y) \land \forall z \enspace (p(z, z) 
+                          \rightarrow \exists m \enspace q(m, z))) \land \forall h \enspace \forall n 
+                          \enspace \neg (q(n, h)) \\
+                        & (moved \enspace \neg \enspace inside) \\
+        \equiv \enspace & (\exists x \enspace \forall y \enspace p(x, y)) \land (\forall z \enspace 
+                          (\neg p(z, z) \lor \exists m \enspace q(m, z))) \land \forall h \enspace \forall n 
+                          \enspace \neg (q(n, h)) \\
+                        & (removed \enspace inside \enspace \rightarrow) \\
+        \equiv \enspace & \exists x \enspace \forall y \enspace \forall z \enspace \forall h \enspace \forall n   
+                          \enspace (p(x, y) \land (\neg p(z, z) \lor \exists m \enspace q(m, z)) 
+                          \land \neg q(n, h)) \\
+                        & (moved\enspace \forall h \enspace \forall n \enspace\forall x \enspace \exists x 
+                          \enspace \forall y \enspace out )\\
+        \equiv \enspace & \exists x \enspace \forall y \enspace \forall z \enspace \exists m \enspace \forall h 
+                           \enspace \forall n \enspace (p(x, y) \land (\neg p(z, z) 
+                           \lor q(m, z)) \land \neg q(n, h)) \\
+                        & (moved\enspace  \exists m \enspace out \enspace and \enspace constructed \enspace CNF) \\
+\end{align*}
+
+Apply Skolem's Rule to eliminate $\exists x, \enspace \exists m$.
+
+\begin{center}
+    $\enspace \forall y \enspace \forall z \enspace \forall h \enspace \forall n 
+     \enspace(p(a, y) \land (\neg p(z, z) \lor q(f(z), z)) \land \neg q(n, h))$
+\end{center}
+
+Giving us three clauses:
+
+\begin{center}
+     $p(a, y), \enspace \neg p(z, z) \lor q(f(z), z), \enspace \neg q(n, h)$
+\end{center}
+
+After negating the statement and putting the result in clausal form, we obtain the following proof:
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1. & $p(a, y)$ & $P$ \\
+2. & $\neg p(z, z) \lor q(f(z), z)$ & $P$ \\
+3. & $\neg q(n, h)$ & $P$ \\
+4. & $q(f(a), a)$ & 1, 2, R, $\{ z/a, y/z \}$ \\
+5. & $[ \enspace ]$ & 3, 4, R, $\{ n/f(z), h/z \}$ \\
+& $QED$. \\
+\end{tabular}
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\textbf{Section 8.3, problem 10.e}   Use Robinson’s unification algorithm to find a most general 
+unifier for each of the following sets of atoms.
+
+$\forall x \enspace p(x) \lor \forall x \enspace q(x) \rightarrow \forall x \enspace (p(x) \lor q(x))$.
+
+\emph{Answer:} 
+
+\begin{align*}
+& \forall x \enspace p(x) \lor \forall x \enspace q(x) \rightarrow \forall y \enspace (p(y) \lor q(y)) \\
+        \equiv \enspace & \forall x \enspace p(x) \lor \forall x \enspace q(x)
+                          \rightarrow \forall z \enspace (p(z) \lor q(z))      && (renamed \enspace variable) \\
+        \equiv \enspace & \neg(\forall x \enspace p(x) \lor \forall y \enspace q(y) 
+                          \land \neg (\forall z \enspace (p(z) \lor q(z)))      &&  (removed \rightarrow) \\
+        \equiv \enspace & (\forall x \enspace p(x) \lor \forall y \enspace q(y)) \land 
+                          \exists z \enspace \neg (p(z) \lor q(z))) && (moved \enspace \neg \enspace inside) \\
+        \equiv \enspace & \forall x \enspace \forall y \enspace (p(x) \lor q(y)) \land \exists z \enspace
+                          (\neg p(z) \land \neg q(z))
+                                      && (moved\enspace \enspace \forall x, \enspace \forall y \enspace out) \\
+        \equiv \enspace & \exists z \enspace \forall x \enspace \forall y \enspace (p(x) \lor q(y) 
+                          \land \neg p(z) \land \neg q(z))  && (moved\enspace \enspace \exists z \enspace out) \\
+        \equiv \enspace & \exists z \enspace \forall x \enspace \forall y \enspace ((p(x) \lor q(y))
+                          \land \neg p(z) \land \neg q(z)) && (constructed \enspace CNF) \\
+\end{align*}
+
+Apply Skolem's Rule to eliminate $\exists z$.
+
+\begin{center}
+    $\enspace \forall x \enspace \forall y ((p(x) \lor q(y)) \land \neg p(a) \land \neg q(a))$
+\end{center}
+
+Giving us three clauses:
+
+\begin{center}
+     $p(x) \lor q(y), \enspace \neg p(a), \enspace \neg q(a)$
+\end{center}
+ 
+After negating the statement and putting the result in clausal form, we obtain the following proof:
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1.  & $p(x) \lor q(y)$     & $P$ \\
+2.  & $\neg p(a)$          & $P$ \\
+3.  & $\neg q(a)$          & $P$ \\
+4.  & $q(y)$               & 1, 2, R, $ \{ x / a \}$ \\   
+5.  & $[ \enspace ]$       & 3, 4, R, $ \{ y / a \}$ \\
+& $QED$. \\
+\end{tabular}
+
+\end{document}

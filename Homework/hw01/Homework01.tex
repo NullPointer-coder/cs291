@@ -1,0 +1,174 @@
+\documentclass[12pt]{article}
+\usepackage[paper=letterpaper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+\usepackage[parfill]{parskip}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+{\large CS 291}\\
+Homework 1
+\end{center}
+
+\begin{flushright}
+Jingbo Wang\\
+jw6347@truman.edu
+\end{flushright}
+
+\textbf{Section 6.2, problem 7.e}  Use Quine's method to show that each wff is a contingency.
+$(A \rightarrow B) \lor ((C \rightarrow \neg B) \land \neg C)$.
+
+\emph{Answer:} First we compute the wff $W(A/\text{true})$.
+
+\begin{center}
+\begin{eqnarray*}
+W(A/\text{true}) & \equiv & (\text{true} \rightarrow B) \lor ((C
+\rightarrow \neg B) \land \neg C) \\ 
+& \equiv & B \lor ((C \rightarrow \neg B) \land \neg C) \\ 
+\end{eqnarray*}
+\end{center}
+
+Let $ X = B \lor ((C \rightarrow \neg B) \land \neg C).$ Then we have:
+
+\begin{center}
+\begin{eqnarray*}
+X(B/\text{true}) & \equiv & \text{true} \lor ((C \rightarrow 
+\text{false}) \land \neg C) \\
+& \equiv & \text{true} \lor (\neg C \land \neg C) \\
+& \equiv & \text{true} \lor \neg C \\ 
+& \equiv & \text{true} \\
+X(B/\text{false}) & \equiv & \text{false} \lor ((C \rightarrow 
+\text{true}) \land \neg C) \\
+& \equiv & \text{false} \lor (\text{true} \land \neg C) \\
+& \equiv & \text{false} \lor \neg C \\
+\end{eqnarray*}
+\end{center}
+
+Let $ Y = \text{false} \lor \neg C.$ Then we have:
+
+\begin{center}
+\begin{eqnarray*}
+Y(C/\text{true}) & \equiv & \text{false} \lor \text{false} \\
+& \equiv & \text{false} \\
+Y(C/\text{false}) & \equiv & \text{false} \lor \text{true} \\
+& \equiv & \text{true} \\
+\end{eqnarray*}
+\end{center}
+
+Therefore $W(A/\text{true})$ is not a tautology.  Next we check $W(A/\text{false})$.
+
+\begin{center}
+\begin{eqnarray*}
+W(A/\text{false}) & \equiv (\text{false} \rightarrow B) \lor ((C
+\rightarrow \neg B) \land \neg C) \\ 
+& \equiv \text{true} \lor ((C \rightarrow \neg B) \land \neg C)  \\
+\end{eqnarray*}
+\end{center}
+
+Let $ X = \text{true} \lor ((C \rightarrow \neg B) \land \neg C).$ Then we have:
+
+\begin{center}
+\begin{eqnarray*}
+X(C/\text{true}) & \equiv & \text{true} \lor (\text{true} 
+\rightarrow \neg B) \land \text{false}) \\
+& \equiv & \text{true} \lor (\neg B \land \text{false}) \\
+& \equiv & \text{true} \lor \text{false} \\
+& \equiv & \text{true} \\
+X(C/\text{false}) & \equiv & \text{true} \lor (\text{false} 
+\rightarrow \neg B) \land \text{true}) \\
+& \equiv & \text{true} \lor (\text{true} \land \text{true}) \\
+& \equiv & \text{true} \lor \text{true} \\
+& \equiv & \text{true} \\
+\end{eqnarray*}
+\end{center}
+
+This produces a contradiction. Thus the wff is a contingency.
+
+\textbf{Section 6.2, problem 8.f} Use Quine's method to show that each wff is a tautology. \\
+$(A\rightarrow B) \rightarrow (C \lor A \rightarrow C \lor B)$
+
+\emph{Answer:} First we compute the wff $W(A/\text{true})$.
+
+\begin{center}
+\begin{eqnarray*}
+W(A/\text{true}) & \equiv & (\text{true}\rightarrow B) 
+\rightarrow (C \lor \text{true} \rightarrow C \lor B) \\ 
+& \equiv & B \rightarrow (true \rightarrow  C \lor B) \\ 
+& \equiv & B \rightarrow (C \lor B)
+\end{eqnarray*}
+\end{center}
+
+Let $ X = B \rightarrow (C \lor B).$ Then we have:
+
+\begin{center}
+\begin{eqnarray*}
+X(B/\text{true}) & \equiv & \text{true} \rightarrow (C \lor \text{true}) \\
+& \equiv & \text{true} \rightarrow \text{true} \\
+& \equiv & \text{true} \\
+X(B/\text{false}) & \equiv & \text{false} \rightarrow (C \lor \text{fale}) \\
+& \equiv & \text{false} \rightarrow C \\
+& \equiv & \text{true} \\
+\end{eqnarray*}
+\end{center}
+
+Therefore $W(A/\text{true})$ is a tautology.  Next we check $W(A/\text{false})$.
+
+\begin{center}
+\begin{eqnarray*}
+W(A/\text{false}) & \equiv & (\text{false}\rightarrow B) 
+\rightarrow (C \lor \text{false} \rightarrow C \lor B) \\ 
+& \equiv & \text{true} \rightarrow (C \rightarrow C \lor B) \\
+& \equiv & C \rightarrow C \lor B 
+\end{eqnarray*}
+\end{center}
+
+Let $ X = \text{true} \rightarrow (C \rightarrow C \lor B).$ Then we have:
+
+\begin{center}
+\begin{eqnarray*}
+X(C/\text{true}) & \equiv & \text{true} \rightarrow \text{true} \lor B \\ 
+& \equiv & \text{true} \\
+X(C/\text{false})
+& \equiv & \text{false} \rightarrow \text{false} \lor B \\ 
+& \equiv & \text{false} \rightarrow \text{false} \\
+& \equiv & \text{true} \\
+\end{eqnarray*}
+\end{center}
+
+Thus the wff is a tautology.
+
+\textbf{Section 6.2, problem 9.b} Verify each of the following equivalences by writing an equivalence proof.
+That is, start on one side and use known equivalences to the other side. \\
+$(A\land B) \rightarrow C \equiv (A \rightarrow C) \lor (B \rightarrow C)$.
+
+\emph{Answer:} We start with the left hand side and derive the right,
+using the equivalences given in Table 6.2.5 on page 475.
+
+\begin{align*}
+(A \land B) \rightarrow C
+  & \equiv \neg (A \land B) \lor C                       && \text{1st conversion} \\
+  & \equiv (\neg A \lor \neg B) \lor C                  && \text{De Morgan's Laws}\\
+  & \equiv (\neg A \lor C) \lor (\neg B \lor C)         && \text{distribute property} \\
+  & \equiv (A \rightarrow C) \lor (B \rightarrow C)     && \text{1st conversion}
+\end{align*}
+
+\textbf{Section 6.2, problem 11.e} Use equivalences to transform each of the following wffs into a DNF. \\
+$P \rightarrow Q \land R$.
+\begin{align*}
+P \rightarrow Q \land R
+ & \equiv \neg P \lor Q \land R \\
+ & \equiv \neg P \lor (Q \land R) \\
+\end{align*}
+
+\textbf{Section 6.2, problem 12.d} Use equivalences to transform each of the following wffs into a CNF. \\
+$(P \lor Q) \land R$.
+\begin{align*}
+(P \lor Q) \land R
+ & \equiv (P \lor Q) \land R \\
+\end{align*}
+
+
+\end{document}

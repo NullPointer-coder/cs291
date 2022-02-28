@@ -1,0 +1,193 @@
+\documentclass[12pt]{article}
+\usepackage[paper=letterpaper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+\usepackage[parfill]{parskip}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+{\large CS 291}\\
+Homework 3
+\end{center}
+
+\begin{flushright}
+Jingbo Wang \\
+jw6347@truman.edu
+\end{flushright}
+
+\textbf{Section 7.1, problem 5.b}  For each of the following wffs, 
+label each occurrence of the variable as either bound free.
+
+$\forall y \enspace q(y) \land \neg p(x,y)$.
+
+\emph{Answer:} 
+\begin{center}
+The one occurrences of x, left to right, is free. \\
+The three occurrences of y, left to right, are bound, bound, and free.\\
+\end{center}
+
+
+\textbf{Section 7.1, problem 5.c}  For each of the following wffs, 
+label each occurrence of the variable as either bound free.
+
+$\neg q(x,y) \lor \exists x \enspace p(x,y)$.
+
+\emph{Answer:} 
+\begin{center}
+The three occurrences of x, left to right, is free, bound, and bound. \\
+The two occurrences of y, left to right, both are free. \\
+\end{center}
+
+
+\textbf{Section 7.1, problem 7.e}  Let isFatherOf(\emph{x}, \emph{y}) be “\emph{x} is the father of \emph{y},” 
+where the domain is the set of all people now living or who have lived. 
+Find the truth value for each of the following wffs.
+
+$\exists x \enspace \exists y \enspace isFatherOf(x, y)$
+
+\emph{Answer:} 
+\begin{center}
+$\exists x \enspace \exists y \enspace isFatherOf(x, y)$ means some \emph{x} are the father of some \emph{y}, so it is \text{True} \\
+\end{center}
+
+
+\textbf{Section 7.1, problem 7.f}  Let isFatherOf(\emph{x}, \emph{y}) be “\emph{x} is the father of 
+\emph{y},” 
+where the domain is the set of all people now living or who have lived. 
+Find the truth value for each of the following wffs.
+
+$\exists y \enspace \exists x \enspace isFatherOf(x, y)$
+
+\emph{Answer:} 
+\begin{center}
+$\exists y \enspace \exists x \enspace isFatherOf(x, y)$ means some \emph{y} are the son of some \emph{x}, so it is \text{True} \\
+\end{center}
+
+
+\textbf{Section 7.1, problem 10.a}  Let \emph{B}(\emph{x}) mean \emph{x} is a bird, 
+let \emph{W}(\emph{x}) mean \emph{x} is a worm, and let \emph{E}(\emph{x}, \emph{y}) mean \emph{x} eats \emph{y}. 
+Find an English sentence to describe each of the following statements.
+
+$\forall x \enspace \forall y \enspace (B(x) \land W(y) \rightarrow E(x, y))$.
+
+\emph{Answer:} 
+\begin{center}
+ Every bird eats every worm. \\
+\end{center}
+
+
+\textbf{Section 7.1, problem 10.b}  Let \emph{B}(\emph{x}) mean \emph{x} is a bird, 
+let \emph{W}(\emph{x}) mean \emph{x} is a worm, and let \emph{E}(\emph{x}, \emph{y}) mean \emph{x} eats \emph{y}. 
+Find an English sentence to describe each of the following statements.
+
+$\forall x \enspace \forall y \enspace (E(x, y)\rightarrow B(x) \land W(y))$.
+
+\emph{Answer:} 
+\begin{center}
+If every \emph{x} eats every \emph{y}, then \emph{x} is bird and \emph{y} is worm.\\
+\end{center}
+
+
+\textbf{Section 7.2, problem 4.c} Use equivalences to construct 
+a prenex conjunctive normal form for each of the following wffs.
+
+$\forall x \enspace \exists y \enspace p(x,y) \rightarrow \exists y 
+\enspace \forall x \enspace p(x,y)$.
+
+\emph{Answer:} We know that a prenex normal form is called a prenex conjunctive normal form 
+if has the form $Q_1x_1...Q_m x_m[D_1 \land ...\land D_k]$.
+\begin{align*}
+\forall x \enspace \exists y \enspace p(x,y) \rightarrow \exists y 
+\enspace \forall x \enspace p(x,y) 
+    & \equiv \forall x \enspace \exists y \enspace p(x,y) \rightarrow 
+      \exists z \enspace \forall w \enspace p(w,z)          && \text{(rename)} \\
+    & \equiv \neg ( \forall x \enspace \exists y \enspace p(x,y)) \lor 
+      \exists z \enspace \forall w \enspace p(w,z)          && \text{(remove $\rightarrow$)} \\ 
+    & \equiv \neg \forall x \enspace \exists y \enspace \neg p(x,y) \lor 
+      \exists z \enspace \forall w \enspace p(w,z)          && \text{(De Morgan's Laws)} \\
+    & \equiv \exists x \enspace \forall y \enspace \neg p(x,y) \lor 
+      \exists z \enspace \forall w \enspace p(w,z)         && \text{(1)} \\
+    & \equiv \exists x \enspace \forall y \enspace \exists z \enspace 
+      \forall w \enspace (\neg p(x,y) \lor p(w,z) )         && \text{(7b)} \\
+\end{align*}
+
+
+\textbf{Section 7.2, problem 4.d} Use equivalences to construct 
+a prenex conjunctive normal form for each of the following wffs.
+
+$\forall x \enspace (p(x,f(x)) \rightarrow p(x,y))$.
+
+\emph{Answer:} We know that a prenex normal form is called a prenex conjunctive normal form 
+if has the form $Q_1x_1...Q_m x_m[D_1 \land ...\land D_k]$.
+\begin{align*}
+\forall x \enspace (p(x,f(x)) \rightarrow p(x,y))
+    & \equiv \forall x \enspace (\neg p(x,f(x)) \lor p(x,y))     && \text{(remove $\rightarrow$)} \\
+\end{align*}
+
+
+\textbf{Section 7.2, problem 5.d} Use equivalences to construct 
+a prenex conjunctive normal form for each of the following wffs.
+
+$\forall x \enspace (p(x,f(x)) \rightarrow p(x,y))$.
+
+\emph{Answer:}We know that a prenex normal form is called a prenex disjunctive normal form 
+if has the form $Q_1x_1...Q_m x_m[D_1 \lor ...\lor D_k]$.
+\begin{align*}
+\forall x \enspace (p(x,f(x)) \rightarrow p(x,y))
+    & \equiv \forall x \enspace (\neg p(x,f(x)) \lor p(x,y))    && \text{(remove $\rightarrow$)} \\
+\end{align*}
+
+
+\textbf{Section 7.2, problem 5.e}  Use equivalences to construct 
+a prenex conjunctive normal form for each of the following wffs.
+
+$\forall x \enspace \forall y \enspace (p(x,y) \rightarrow \exists z \enspace (p(x,z) \land p(y,z)))$.
+
+\emph{Answer:}We know that a prenex normal form is called a prenex disjunctive normal form 
+if has the form $Q_1x_1...Q_m x_m[D_1 \lor ...\lor D_k]$.
+\begin{align*}
+\forall x \enspace \forall y \enspace (p(x,y) \rightarrow \exists z \enspace (p(x,z) \land p(y,z)))
+    & \equiv \forall x \enspace \forall y \enspace (\neg p(x,y) \lor \exists z \\
+    & (p(x,z) \land p(y,z)))    && \text{(remove $\rightarrow$)} \\
+    & \equiv \forall x \enspace \forall y \enspace \exists z \enspace (\neg p(x,y) \\
+    & \lor (p(x,z) \land p(y,z)))                       && \text{(7b)} \\
+\end{align*}
+
+
+\textbf{Section 7.2, problem 8.b}  Formalize each of the following statements, 
+where \emph{B}(\emph{x}) means \emph{x} is a bird, \emph{W}(\emph{x}) means \emph{x} is a worm, and 
+\emph{E}(\emph{x}, \emph{y}) means \emph{x} eats \emph{y}.
+
+Some birds eat worms.
+
+\emph{Answer:}
+\begin{center}
+$\exists x(B(x) \rightarrow \exists y (W(y) \land E(x,y)))$    
+\end{center}
+
+\textbf{Section 7.2, problem 8.c}  Formalize each of the following statements, 
+where \emph{B}(\emph{x}) means \emph{x} is a bird, \emph{W}(\emph{x}) means \emph{x} is a worm, and 
+\emph{E}(\emph{x}, \emph{y}) means \emph{x} eats \emph{y}.
+
+Only birds eat worms.
+
+\emph{Answer:} 
+\begin{center}
+$\forall x \enspace \forall y \enspace (W(x) \land E(y,x) \rightarrow B(y))$\\
+\end{center}
+
+\textbf{Section 7.2, problem 8.d}  Formalize each of the following statements, 
+where \emph{B}(\emph{x}) means \emph{x} is a bird, \emph{W}(\emph{x}) means \emph{x} is a worm, and 
+\emph{E}(\emph{x}, \emph{y}) means \emph{x} eats \emph{y}.
+
+Not all birds eat worms
+
+\emph{Answer:}
+\begin{center}
+$\neg \forall x(B(x) \rightarrow \exists y (W(y) \land E(x,y)))$    
+\end{center}
+
+\end{document}

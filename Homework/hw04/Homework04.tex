@@ -1,0 +1,182 @@
+\documentclass[12pt]{article}
+\usepackage[paper=letterpaper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+\usepackage[parfill]{parskip}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{center}
+{\large CS 291}\\
+Homework 4
+\end{center}
+
+\begin{flushright}
+Jingbo Wang\\
+jw6347@truman.edu \\
+\end{flushright}
+
+
+\textbf{Section 7.3, problem 6.d}  Give a formal proof for each of the
+following tautologies by using the CP rule. Do not use the IP rule.
+
+$\forall x \enspace (p(x) \rightarrow q(x)) \rightarrow (\exists x 
+\enspace p(x) \rightarrow \exists x \enspace q(x))$.
+
+\emph{Answer:} 
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1. & $\forall x \enspace (p(x) \rightarrow q(x))$ & $P$ \\
+2. & \qquad $\exists x \enspace p(x)$  
+                 & $P$  [for $\exists x \enspace p(x) \rightarrow \exists x \enspace q(x)$] \\
+3. & \qquad $p(x) \rightarrow q(x)$ & 1, UI \\
+4. & \qquad $p(x)$ & 2, EI \\
+5. & \qquad $q(x)$ & 3, 4, MP \\
+6. & \qquad $\exists x \enspace q(x)$ & 5, EG \\
+7. & $\exists x \enspace p(x) \rightarrow \exists x \enspace q(x)$ & 2-6, CP \\
+& $QED$ & 1,7, CP \\
+\end{tabular}
+
+\textbf{Section 7.3, problem 6.f}  Give a formal proof for each of the
+following tautologies by using the CP rule. Do not use the IP rule.
+
+$\forall x \enspace (p(x) \rightarrow q(x)) \rightarrow (\forall x 
+\enspace p(x) \rightarrow \forall x \enspace q(x))$.
+
+\emph{Answer:} 
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1. & $\forall x \enspace (p(x) \rightarrow q(x))$ & $P$ \\
+2. & \qquad $\forall x \enspace p(x)$ & $P$ [for $\forall x 
+             \enspace p(x) \rightarrow \forall x \enspace q(x)$] \\
+3. & \qquad $p(x) \rightarrow q(x)$ & 1, UI \\
+4. & \qquad $p(x)$ & 2, UI \\
+5. & \qquad  $q(x)$ & 3, 4, MP \\
+6. & \qquad $\forall x \enspace q(x)$ & 5, UG \\
+7. & $\forall x \enspace p(x) \rightarrow \forall x \enspace q(x)$ & 2-6, CP \\
+& $QED$ & 1, 7, CP \\
+\end{tabular}
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\textbf{Section 7.3, problem 7.c}  Give a formal proof that each of the following 
+wffs is valid by using the CP rule and by using the IP rule in each proof.
+
+$\exists y \enspace \forall x \enspace p(x, y) \rightarrow 
+\forall x \enspace \exists y \enspace p(x, y)$.
+
+\emph{Answer:} 
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1. & $\exists y \enspace \forall x \enspace p(x, y)$ & $P$ \\
+2. & \qquad $\neg (\forall x \enspace \exists y  \enspace p(x,y))$ 
+                             & P[for$\forall x \enspace \exists y \enspace p(x, y)$] \\
+3. & \qquad $\exists x \enspace \forall y  \enspace \neg p(x,y)$  & 2, T \\                           
+4. & \qquad $\forall x \enspace p(x, c)$ & 1, EI \\
+5. & \qquad $p(d,c)$ & 4, UI \\
+6. & \qquad $\forall y \enspace \neg p(d,y)$ & 3, EI\\
+7. & \qquad $\neg p(d,c)$ & 6, UI \\
+8. & \qquad $False$ & 5, 7, Contr \\
+9. & $\forall x \enspace \exists y \enspace p(x, y)$ & 2-8, IP \\
+& QED & 1, 9, CP \\
+\end{tabular}
+
+\textbf{Section 7.3, problem 8.d}  Transform each informal argument into a formalized wff. 
+Then give a formal proof of the wff.
+
+\emph{Every rational number is a real number. 
+There is a rational number.\\ 
+Therefore, there is a real number.}
+
+\emph{Answer:} 
+
+\begin{center}
+Let D(\emph{x}) mean that \emph{x} is rational number, L(\emph{x}) mean that \emph{x} 
+is real number. \\
+Every rational number is a real number: $\forall x (D(x) \rightarrow L(x))$ \\
+There is a rational number: $\exists x \enspace D(x)$ \\
+Therefore, there is a real number: $\exists x \enspace L(x)$ \\
+\end{center}
+
+\emph{The argument can be written as the follow wff:} 
+
+$\forall x (D(x) \rightarrow L(x)) \land \exists x \enspace D(x) 
+\rightarrow \exists x \enspace L(x)$. 
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1. & $\forall x (D(x) \rightarrow L(x))$ & $P$ \\
+2. & $\exists x \enspace D(x)$ & $P$ \\
+3. & $D(b)$ & 2, EI \\
+4. & $D(b) \rightarrow L(d)$ & 1, UI \\
+5. & $L(d)$ & 4, MP \\
+6. & $\exists x \enspace L(x)$ & 5, EG \\
+& QED & 1, 2, 6, CP \\
+\end{tabular}
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\\
+\textbf{Section 7.3, problem 8.e}  Transform each informal argument into a formalized wff. 
+Then give a formal proof of the wff.
+
+\emph{Some freshmen like all sophomores. 
+No freshman likes any junior.\\
+Therefore, no sophomore is a junior.}
+
+\emph{Answer:}
+
+\begin{center}
+Let F(\emph{x}) mean that \emph{x} is freshmen, S(\emph{x}) mean that \emph{x} is sophomore, \\
+J(x) mean that \emph{x} is junior, and L(\emph{x,y}) mean that \emph{x} likes \emph{y}. \\
+A: Some freshmen like all sophomores: $\exists x \enspace (F(x) \land \forall y \enspace 
+(S(y) \rightarrow L(x, y)))$ \\
+No freshman likes any junior: $\forall x \enspace (F(x) \rightarrow \forall y \enspace (J(y) \rightarrow \neg L(x,y)))$\\
+B: Therefore, no sophomore is a junior: $\forall x \enspace (S(x) \rightarrow \neg J(x))$ \\
+\end{center}
+
+\emph{Then the argument can be formalized as A $\rightarrow$ B, where}
+
+$\exists x \enspace (F(x) \land \forall y \enspace 
+(S(y) \rightarrow L(x, y))) \land \forall x \enspace (F(x) \rightarrow \forall y 
+\enspace (J(y) \rightarrow \neg L(x,y))) \\
+\rightarrow \forall x \enspace (S(x) \rightarrow \neg J(x))$.
+
+\begin{tabular}{p{.8cm}p{8.5cm}l}
+1. & $\exists x \enspace (F(x) \land \forall y \enspace 
+     (S(y) \rightarrow L(x, y)))$ & $P$ \\
+2. & $\forall x \enspace (F(x) \rightarrow \forall y 
+     \enspace (J(y) \rightarrow \neg L(x,y)))$ & $P$ \\
+3. & $F(c) \land \forall y \enspace (S(y) \rightarrow L(c, y))$ & 1, EI \\
+4. & $\forall y \enspace (S(y) \rightarrow L(c, y))$ & 3, Simp \\
+5. & $S(x) \rightarrow L(c, x)$ & 4, UI \\
+6. & \qquad $S(x)$ & $P$[for $S(x) \rightarrow \neg J(x)$] \\
+7. & \qquad $L(c, x)$ & 5, 6, MP \\
+8. & \qquad $F(c) \rightarrow \forall y \enspace (J(y) \rightarrow \neg L(c,y))$ & 2, UI \\
+9. & \qquad $F(c)$ & 3, Simp \\
+10. & \qquad $\forall y \enspace (J(y) \rightarrow \neg L(c,y))$ & 8, 9, MP \\
+11. & \qquad $J(x) \rightarrow \neg L(c, x)$  & 10, UI \\
+12. & \qquad $\neg J(x)$ & 7, 11 , MT \\
+13. & \qquad $S(x) \rightarrow \neg J(x)$ & 6, 12, CP \\
+14. & $\forall x \enspace (S(x) \rightarrow \neg J(x))$ & 13, UG \\
+& QED & 1-5, 13, 14, CP \\
+\end{tabular}
+
+\end{document}
